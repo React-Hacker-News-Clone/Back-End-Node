@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 require("dotenv/config");
 
 // Set app to express
@@ -11,6 +12,7 @@ const app = express();
 const storiesRoutes = require("./routes/stories");
 
 // MiddleWare
+app.use(cors());
 app.use(bodyParser.json());
 app.use("/stories", storiesRoutes);
 
