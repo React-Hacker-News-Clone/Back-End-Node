@@ -50,6 +50,27 @@ router.post("/", async (req, res) => {
   }
 });
 
+// * Update Requests * //
+
+// Update Story by ID
+router.patch("/:storyId", async (req, res) => {
+  try {
+    const updatedStory = await Stories.updateOne(
+      { _id: req.params.storyId },
+      {
+        $set: {
+          title: req.body.title,
+          story: req.body.story,
+          url: req.body.url
+        }
+      }
+    );
+    res.json(updatedStory);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 // * Delete Requests * //
 
 // Delete Story by ID
