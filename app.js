@@ -11,6 +11,7 @@ const app = express();
 const storiesRoutes = require("./routes/stories");
 
 // MiddleWare
+app.use(bodyParser.json());
 app.use("/stories", storiesRoutes);
 
 // Routes
