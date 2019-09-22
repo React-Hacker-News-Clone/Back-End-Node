@@ -1,7 +1,14 @@
 const mongoose = require("mongoose");
 
 const StoiesSchema = mongoose.Schema({
-  title: String,
+  title: {
+    type: String,
+    required: true
+  },
+  story: {
+    type: String,
+    required: true
+  },
   url: String
 });
 
