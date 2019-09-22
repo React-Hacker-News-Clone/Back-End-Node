@@ -1,19 +1,31 @@
+// Imports
 const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+require("dotenv/config");
 
+// Set app to express
 const app = express();
 
-//Middleware
-app.use("/posts", () => {
-  console.log("This is middleware");
-});
+// Import Routes
+const storiesRoutes = require("./routes/stories");
+
+// MiddleWare
+app.use(cors());
+app.use(bodyParser.json());
+app.use("/stories", storiesRoutes);
 
 // Routes
 app.get("/", (req, res) => {
   res.send("We are home");
 });
 
-app.get("/posts", (req, res) => {
-  res.send("We are on posts");
-});
+// Connect To DB
+mongoose.connect(
+  process.env.DB_CONNECTION,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => console.log("Connected to DB")
+);
 
 app.listen(5000);
