@@ -29,4 +29,5 @@ mongoose.connect(
 );
 
 var PORT = process.env.PORT || 5000;
+console.log("PORT being used", PORT);
 app.listen(PORT);
