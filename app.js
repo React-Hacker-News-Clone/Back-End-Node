@@ -9,7 +9,7 @@ require("dotenv/config");
 // Set Limiter on Story Posts
 const limiter = rateLimit({
   windowMs: 1440 * 60 * 1000, // 24 hours
-  max: 6 // limit each IP to 3 requests per windowMs
+  max: 1 // limit each IP to 3 requests per windowMs
 });
 
 // Set app to express
