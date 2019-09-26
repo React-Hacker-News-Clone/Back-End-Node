@@ -22,7 +22,7 @@ const storiesRoutes = require("./routes/stories");
 app.use(cors());
 app.use(bodyParser.json());
 app.use("/stories", storiesRoutes);
-app.use("/stories", limiter);
+app.use(limiter);
 
 // Routes
 app.get("/", (req, res) => {
